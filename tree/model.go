@@ -10,6 +10,7 @@ type Block struct {
 	left *Block
 	right *Block
 	valid bool
+	data []byte
 	createdTime time.Time
 }
 
