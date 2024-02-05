@@ -29,3 +29,12 @@ func NewBlock () *Block{
 	return block
 }
 
+
+func Insert (block, root *block){
+	if !block.valid{
+		return
+	}
+
+	//err.. Cade o data? kkkk
+	//esqueci de implementar, haha
+}
