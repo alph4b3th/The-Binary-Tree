@@ -32,10 +32,26 @@ func NewBlock () *Block{
 
 
 func Insert (block, root *block){
-	if !block.valid{
+	if !block.valid || !root.valid{
 		return
 	}
 
-	//err.. Cade o data? kkkk
-	//esqueci de implementar, haha
+	if len(block.data) == 0 {
+		return
+	}
+
+	switch{
+		case len(block.data) < len(root.data){
+			root.left = &block
+		}
+
+		case len(block.data) > len(root.data){
+			root.right = &block
+		}
+
+		default{
+			// ok, ele nao eh menor
+			// nem maior...
+		}
+	}
 }
