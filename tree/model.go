@@ -12,9 +12,10 @@ type Block struct {
 
 
 func NewBlock () *Block{
-	block = new(Block)
+	block := new(Block)
 	block.uid = 0
 	block.valid = true
-	createdTime = time.Now()
+	block.createdTime = time.Now()
+	return block
 }
 

@@ -7,5 +7,5 @@ func init(){}
 
 func main(){
 	block := tree.NewBlock()
-	fmt.Print(block)
+	fmt.Println(block)
 }
