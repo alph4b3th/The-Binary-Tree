@@ -32,26 +32,30 @@ func NewBlock () *Block{
 }
 
 
-func Insert (block, root *Block){
-	if !block.valid || !root.valid{
-		return
-	}
+func Insert (root *Block, blocks ...*Block){
+	for _, block := range blocks{
+		if !block.valid || !root.valid{
+			return
+		}
 
-	if len(block.data) == 0 {
-		return
-	}
+		if len(block.data) == 0 {
+			return
+		}
 
-	switch {
-		case len(block.data) < len(root.data):
-			root.left = block
-			root.hierarchy += 1
+		switch {
+			case len(block.data) < len(root.data):
+				root.left = block
+				root.hierarchy += 1
 
-		case len(block.data) > len(root.data):
-			root.right = block
-			root.hierarchy += 1
+			case len(block.data) > len(root.data):
+				root.right = block
+				root.hierarchy += 1
 
-		default:
-			// ok, ele nao eh menor
-			// nem maior...
+			default:
+				// ok, ele nao eh menor
+				// nem maior...
+
+		}
+
 	}
 }
