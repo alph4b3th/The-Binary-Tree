@@ -11,6 +11,7 @@ type Block struct {
 	right *Block
 	valid bool
 	data []byte
+	hierarchy uint32
 	createdTime time.Time
 }
 
@@ -43,9 +44,11 @@ func Insert (block, root *Block){
 	switch {
 		case len(block.data) < len(root.data):
 			root.left = block
+			root.hierarchy += 1
 
 		case len(block.data) > len(root.data):
 			root.right = block
+			root.hierarchy += 1
 
 		default:
 			// ok, ele nao eh menor
