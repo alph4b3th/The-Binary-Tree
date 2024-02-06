@@ -31,7 +31,7 @@ func NewBlock () *Block{
 }
 
 
-func Insert (block, root *block){
+func Insert (block, root *Block){
 	if !block.valid || !root.valid{
 		return
 	}
@@ -40,18 +40,15 @@ func Insert (block, root *block){
 		return
 	}
 
-	switch{
-		case len(block.data) < len(root.data){
-			root.left = &block
-		}
+	switch {
+		case len(block.data) < len(root.data):
+			root.left = block
 
-		case len(block.data) > len(root.data){
-			root.right = &block
-		}
+		case len(block.data) > len(root.data):
+			root.right = block
 
-		default{
+		default:
 			// ok, ele nao eh menor
 			// nem maior...
-		}
 	}
 }
