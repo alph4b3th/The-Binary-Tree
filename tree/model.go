@@ -60,6 +60,10 @@ func Insert (root *Block, blocks ...*Block){
 	}
 }
 
+func (block *Block) DefineData(data []byte){
+	block.data = data
+}
+
 func (block *Block) GetHierarchy() uint32 {
 	return block.hierarchy
 }

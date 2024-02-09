@@ -8,6 +8,7 @@ func init() {}
 func main() {
 	root := tree.NewBlock()
 	block := tree.NewBlock()
-	tree.Insert(root, block)
-	fmt.Println(block)
+	block.data = []byte("tem algo aqui kk")
+	tree.Insert(root, block, block)
+	fmt.Println(root.GetHierarchy())
 }
