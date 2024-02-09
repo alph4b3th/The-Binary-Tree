@@ -59,3 +59,7 @@ func Insert (root *Block, blocks ...*Block){
 
 	}
 }
+
+func (block *Block) GetHierarchy() uint32 {
+	return block.hierarchy
+}
