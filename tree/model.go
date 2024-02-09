@@ -42,7 +42,27 @@ func Insert (root *Block, blocks ...*Block){
 			return
 		}
 
-		if block.uid == root.uid {
+		verify := func VerifyUID(){
+			var isvalid bool = true
+			var warnings uint8
+			const criterion = 3
+			for _, BYTE := range block.uid{
+				if warning >= criterion{
+					break
+				}
+				for _, BYTE2 := range root.uid{
+					if BYTE == BYTE2{
+						warning +=1
+						if warning >= criterion{
+							isvalid = false
+							break
+						}
+				}
+			}
+			return isvalid
+		}
+
+		if !verify() {
 			return
 		}
 
