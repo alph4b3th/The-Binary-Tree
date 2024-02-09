@@ -42,6 +42,11 @@ func Insert (root *Block, blocks ...*Block){
 			return
 		}
 
+		if block.uid == root.uid {
+			return
+		}
+
+
 		switch {
 			case len(block.data) < len(root.data):
 				root.left = block
