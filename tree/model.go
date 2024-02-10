@@ -32,6 +32,13 @@ func NewBlock () *Block{
 }
 
 
+
+// Ehh, oq aconteceu aquia? -> Fri 9 Feb, 21:01
+// [user@golang-station the-tree]$ go run main.go
+// # the-tree/tree
+// tree/model.go:45:21: syntax error: unexpected a, expected (
+// tree/model.go:46:4: syntax error: unexpected var at end of statement
+
 func Insert (root *Block, blocks ...*Block){
 	for _, block := range blocks{
 		if !block.valid || !root.valid{
@@ -42,27 +49,31 @@ func Insert (root *Block, blocks ...*Block){
 			return
 		}
 
-		verify := func VerifyUID(){
+		isValidUID := func() bool{
 			var isvalid bool = true
 			var warnings uint8
 			const criterion = 3
 			for _, BYTE := range block.uid{
-				if warning >= criterion{
+				if warnings >= criterion{
 					break
 				}
 				for _, BYTE2 := range root.uid{
 					if BYTE == BYTE2{
-						warning +=1
-						if warning >= criterion{
+						warnings +=1
+						if warnings >= criterion{
 							isvalid = false
 							break
 						}
+					}
 				}
 			}
 			return isvalid
-		}
+		}()
 
-		if !verify() {
+
+
+
+		if !isValidUID{
 			return
 		}
 
